@@ -4,6 +4,8 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  site: 'https://rimba-maker.github.io',
+  base: '/soundbox-karaoke',
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
