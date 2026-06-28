@@ -26,11 +26,11 @@ const weekend = [
     <!-- Tab toggle -->
     <div class="flex justify-center mb-8">
       <div class="bg-surface rounded-full p-1 flex gap-1">
-        <button id="tab-weekday" onclick="switchTab('weekday')"
+        <button id="tab-weekday"
           class="tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all bg-pink text-white">
           Weekday (Sen–Kam)
         </button>
-        <button id="tab-weekend" onclick="switchTab('weekend')"
+        <button id="tab-weekend"
           class="tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all text-muted hover:text-white">
           Weekend & Libur
         </button>
@@ -49,7 +49,7 @@ const weekend = [
                 <span class="text-muted text-xs">12.00 – 17.00</span>
               </th>
               <th class="text-center px-5 py-4">
-                <span class="text-gold font-bold text-xs uppercase tracking-wider block">Regular</span>
+                <span class="text-gold font-bold text-xs uppercase tracking-wider block">Prime Time</span>
                 <span class="text-muted text-xs">17.00 – 22.00</span>
               </th>
               <th class="text-center px-5 py-4">
@@ -92,7 +92,7 @@ const weekend = [
             <tr class="border-b border-border">
               <th class="text-left text-muted font-semibold px-5 py-4">Room</th>
               <th class="text-center px-5 py-4">
-                <span class="text-pink font-bold text-xs uppercase tracking-wider block">Siang</span>
+                <span class="text-green-400 font-bold text-xs uppercase tracking-wider block">Happy Hour</span>
                 <span class="text-muted text-xs">12.00 – 17.00</span>
               </th>
               <th class="text-center px-5 py-4">
@@ -113,7 +113,7 @@ const weekend = [
                   <span class="text-muted text-xs block">{r.cap}</span>
                 </td>
                 <td class="text-center px-5 py-4">
-                  <span class="text-pink font-bold">Rp {r.h1}</span>
+                  <span class="text-green-400 font-bold">Rp {r.h1}</span>
                   <span class="text-muted text-xs block">/jam</span>
                 </td>
                 <td class="text-center px-5 py-4 bg-gold/5">
@@ -143,22 +143,17 @@ const weekend = [
 </section>
 
 <script>
-function switchTab(tab: string) {
-  const isWeekday = tab === 'weekday'
-  ;(document.getElementById('table-weekday') as HTMLElement).classList.toggle('hidden', !isWeekday)
-  ;(document.getElementById('table-weekend') as HTMLElement).classList.toggle('hidden', isWeekday)
+  const ACTIVE = 'tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all bg-pink text-white'
+  const INACTIVE = 'tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all text-muted hover:text-white'
 
-  const active = 'bg-pink text-white'
-  const inactive = 'text-muted hover:text-white'
-  const btnW = document.getElementById('tab-weekday') as HTMLElement
-  const btnE = document.getElementById('tab-weekend') as HTMLElement
-
-  if (isWeekday) {
-    btnW.className = `tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all ${active}`
-    btnE.className = `tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all ${inactive}`
-  } else {
-    btnW.className = `tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all ${inactive}`
-    btnE.className = `tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all ${active}`
+  function switchTab(tab: string) {
+    const isWeekday = tab === 'weekday'
+    ;(document.getElementById('table-weekday') as HTMLElement).classList.toggle('hidden', !isWeekday)
+    ;(document.getElementById('table-weekend') as HTMLElement).classList.toggle('hidden', isWeekday)
+    ;(document.getElementById('tab-weekday') as HTMLElement).className = isWeekday ? ACTIVE : INACTIVE
+    ;(document.getElementById('tab-weekend') as HTMLElement).className = isWeekday ? INACTIVE : ACTIVE
   }
-}
+
+  document.getElementById('tab-weekday')?.addEventListener('click', () => switchTab('weekday'))
+  document.getElementById('tab-weekend')?.addEventListener('click', () => switchTab('weekend'))
 </script>
