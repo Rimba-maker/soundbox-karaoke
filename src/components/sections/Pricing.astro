@@ -1,0 +1,164 @@
+---
+const weekday = [
+  { room: 'Box Room',    cap: '2–5 org',   h1: '60k', h2: '75k', h3: '65k' },
+  { room: 'Studio Room', cap: '5–10 org',  h1: '90k', h2: '115k', h3: '100k' },
+  { room: 'Stage Room',  cap: '10–20 org', h1: '150k', h2: '185k', h3: '165k' },
+  { room: 'VIP Suite',   cap: '20–40 org', h1: '350k', h2: '450k', h3: '400k' },
+]
+const weekend = [
+  { room: 'Box Room',    cap: '2–5 org',   h1: '75k', h2: '85k', h3: '75k' },
+  { room: 'Studio Room', cap: '5–10 org',  h1: '110k', h2: '130k', h3: '115k' },
+  { room: 'Stage Room',  cap: '10–20 org', h1: '185k', h2: '220k', h3: '195k' },
+  { room: 'VIP Suite',   cap: '20–40 org', h1: '420k', h2: '500k', h3: '450k' },
+]
+---
+
+<section class="section-padding bg-bg" id="harga">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <p class="text-xs font-bold text-gold tracking-[0.2em] uppercase mb-3">Harga</p>
+      <h2 class="text-4xl md:text-5xl font-extrabold font-display text-white mb-3">
+        Harga Jelas, <span class="gradient-text">Tidak Ada Kejutan.</span>
+      </h2>
+      <p class="text-muted">Bayar per jam, per room. Tidak ada biaya tersembunyi.</p>
+    </div>
+
+    <!-- Tab toggle -->
+    <div class="flex justify-center mb-8">
+      <div class="bg-surface rounded-full p-1 flex gap-1">
+        <button id="tab-weekday" onclick="switchTab('weekday')"
+          class="tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all bg-pink text-white">
+          Weekday (Sen–Kam)
+        </button>
+        <button id="tab-weekend" onclick="switchTab('weekend')"
+          class="tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all text-muted hover:text-white">
+          Weekend & Libur
+        </button>
+      </div>
+    </div>
+
+    <!-- Weekday table -->
+    <div id="table-weekday" class="card-dark overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-border">
+              <th class="text-left text-muted font-semibold px-5 py-4">Room</th>
+              <th class="text-center px-5 py-4">
+                <span class="text-green-400 font-bold text-xs uppercase tracking-wider block">Happy Hour</span>
+                <span class="text-muted text-xs">12.00 – 17.00</span>
+              </th>
+              <th class="text-center px-5 py-4">
+                <span class="text-gold font-bold text-xs uppercase tracking-wider block">Regular</span>
+                <span class="text-muted text-xs">17.00 – 22.00</span>
+              </th>
+              <th class="text-center px-5 py-4">
+                <span class="text-purple font-bold text-xs uppercase tracking-wider block">Late Night</span>
+                <span class="text-muted text-xs">22.00 – 02.00</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            {weekday.map((r, i) => (
+              <tr class={`hover:bg-surface-2 transition-colors ${i === 3 ? 'bg-gold/5' : ''}`}>
+                <td class="px-5 py-4">
+                  <span class="font-bold text-white">{r.room}</span>
+                  <span class="text-muted text-xs block">{r.cap}</span>
+                </td>
+                <td class="text-center px-5 py-4">
+                  <span class="text-green-400 font-bold">Rp {r.h1}</span>
+                  <span class="text-muted text-xs block">/jam</span>
+                </td>
+                <td class="text-center px-5 py-4 bg-gold/5">
+                  <span class="text-gold font-bold">Rp {r.h2}</span>
+                  <span class="text-muted text-xs block">/jam</span>
+                </td>
+                <td class="text-center px-5 py-4">
+                  <span class="text-purple font-bold">Rp {r.h3}</span>
+                  <span class="text-muted text-xs block">/jam</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Weekend table -->
+    <div id="table-weekend" class="card-dark overflow-hidden hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-border">
+              <th class="text-left text-muted font-semibold px-5 py-4">Room</th>
+              <th class="text-center px-5 py-4">
+                <span class="text-pink font-bold text-xs uppercase tracking-wider block">Siang</span>
+                <span class="text-muted text-xs">12.00 – 17.00</span>
+              </th>
+              <th class="text-center px-5 py-4">
+                <span class="text-gold font-bold text-xs uppercase tracking-wider block">Prime Time</span>
+                <span class="text-muted text-xs">17.00 – 22.00</span>
+              </th>
+              <th class="text-center px-5 py-4">
+                <span class="text-purple font-bold text-xs uppercase tracking-wider block">Late Night</span>
+                <span class="text-muted text-xs">22.00 – 02.00</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            {weekend.map((r, i) => (
+              <tr class={`hover:bg-surface-2 transition-colors ${i === 3 ? 'bg-gold/5' : ''}`}>
+                <td class="px-5 py-4">
+                  <span class="font-bold text-white">{r.room}</span>
+                  <span class="text-muted text-xs block">{r.cap}</span>
+                </td>
+                <td class="text-center px-5 py-4">
+                  <span class="text-pink font-bold">Rp {r.h1}</span>
+                  <span class="text-muted text-xs block">/jam</span>
+                </td>
+                <td class="text-center px-5 py-4 bg-gold/5">
+                  <span class="text-gold font-bold">Rp {r.h2}</span>
+                  <span class="text-muted text-xs block">/jam</span>
+                </td>
+                <td class="text-center px-5 py-4">
+                  <span class="text-purple font-bold">Rp {r.h3}</span>
+                  <span class="text-muted text-xs block">/jam</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="mt-6 flex flex-wrap gap-4 justify-center text-xs text-muted">
+      <span>Minimum 1 jam semua room</span>
+      <span>•</span>
+      <span>Perpanjangan: minta ke staff 15 menit sebelum habis</span>
+      <span>•</span>
+      <span>Pembayaran: Cash · QRIS · Transfer · Kartu Debit/Kredit</span>
+    </div>
+  </div>
+</section>
+
+<script>
+function switchTab(tab: string) {
+  const isWeekday = tab === 'weekday'
+  ;(document.getElementById('table-weekday') as HTMLElement).classList.toggle('hidden', !isWeekday)
+  ;(document.getElementById('table-weekend') as HTMLElement).classList.toggle('hidden', isWeekday)
+
+  const active = 'bg-pink text-white'
+  const inactive = 'text-muted hover:text-white'
+  const btnW = document.getElementById('tab-weekday') as HTMLElement
+  const btnE = document.getElementById('tab-weekend') as HTMLElement
+
+  if (isWeekday) {
+    btnW.className = `tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all ${active}`
+    btnE.className = `tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all ${inactive}`
+  } else {
+    btnW.className = `tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all ${inactive}`
+    btnE.className = `tab-btn rounded-full px-6 py-2 text-sm font-bold transition-all ${active}`
+  }
+}
+</script>

@@ -1,0 +1,77 @@
+---
+---
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <a href="#" class="flex items-center gap-1.5 shrink-0">
+      <span class="text-2xl font-extrabold font-display tracking-tight">
+        <span class="gradient-text">Sound</span><span class="text-white">Box</span>
+      </span>
+      <span class="text-xs text-muted/60 font-medium hidden sm:block">KARAOKE</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7">
+      {[['#rooms','Rooms'],['#harga','Harga'],['#promo','Promo'],['#gallery','Gallery'],['#lokasi','Lokasi']].map(([href,label]) => (
+        <a href={href} class="text-sm font-medium text-muted hover:text-white transition-colors">{label}</a>
+      ))}
+    </nav>
+
+    <a
+      href="#booking"
+      class="hidden md:inline-flex items-center gap-2 bg-pink text-white rounded-full px-6 py-2.5 text-sm font-bold hover:bg-pink-dark transition-all hover:scale-105"
+    >
+      Book Sekarang
+    </a>
+
+    <button id="mob-btn" class="md:hidden p-2 text-white" aria-label="Toggle menu">
+      <svg id="ico-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="ico-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <div id="mob-menu" class="hidden md:hidden bg-surface/95 backdrop-blur-md border-t border-border px-6 py-5">
+    <nav class="flex flex-col gap-4">
+      {[['#rooms','Rooms'],['#harga','Harga'],['#promo','Promo'],['#gallery','Gallery'],['#lokasi','Lokasi']].map(([href,label]) => (
+        <a href={href} class="text-sm font-medium text-muted hover:text-white transition-colors">{label}</a>
+      ))}
+      <a href="#booking" class="mt-2 inline-flex bg-pink text-white rounded-full px-6 py-2.5 text-sm font-bold w-fit">
+        Book Sekarang
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+const btn  = document.getElementById('mob-btn')!
+const menu = document.getElementById('mob-menu')!
+const icoO = document.getElementById('ico-open')!
+const icoC = document.getElementById('ico-close')!
+const nav  = document.getElementById('navbar')!
+
+btn.addEventListener('click', () => {
+  const open = !menu.classList.contains('hidden')
+  menu.classList.toggle('hidden', open)
+  icoO.classList.toggle('hidden', !open)
+  icoC.classList.toggle('hidden', open)
+})
+
+menu.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => {
+    menu.classList.add('hidden')
+    icoO.classList.remove('hidden')
+    icoC.classList.add('hidden')
+  })
+)
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+    nav.classList.add('bg-bg/95', 'backdrop-blur-md', 'border-b', 'border-border')
+  } else {
+    nav.classList.remove('bg-bg/95', 'backdrop-blur-md', 'border-b', 'border-border')
+  }
+}, { passive: true })
+</script>

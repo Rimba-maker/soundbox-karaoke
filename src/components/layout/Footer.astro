@@ -1,0 +1,93 @@
+---
+const WA = '628112233445'
+const waUrl = `https://wa.me/${WA}`
+---
+
+<footer class="bg-surface border-t border-border" id="lokasi">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="lg:col-span-2">
+        <a href="#" class="inline-flex items-center gap-1.5 mb-4">
+          <span class="text-2xl font-extrabold font-display tracking-tight">
+            <span class="gradient-text">Sound</span><span class="text-white">Box</span>
+          </span>
+          <span class="text-xs text-muted/60 font-medium">KARAOKE</span>
+        </a>
+        <p class="text-muted text-sm leading-relaxed mb-5 max-w-xs">
+          Karaoke private room premium di Jakarta. Sound system JBL Pro, 50.000+ lagu,
+          ruangan nyaman untuk semua occasions. Buka setiap hari.
+        </p>
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-pink text-white rounded-full px-6 py-3 text-sm font-bold hover:bg-pink-dark transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+          Chat WhatsApp Sekarang
+        </a>
+      </div>
+
+      <!-- Info -->
+      <div>
+        <h3 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Info</h3>
+        <ul class="flex flex-col gap-3 text-sm text-muted">
+          <li>
+            <span class="flex items-center gap-1.5 text-white/80 font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#e91e8c"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Lokasi
+            </span>
+            Jl. Jend. Sudirman Kav. 52-53<br/>Jakarta Selatan 12190
+          </li>
+          <li>
+            <span class="flex items-center gap-1.5 text-white/80 font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#9ca3af"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+              Jam Buka
+            </span>
+            Setiap hari • 12.00 – 02.00 WIB
+          </li>
+          <li>
+            <span class="flex items-center gap-1.5 text-white/80 font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#9ca3af"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              Kontak
+            </span>
+            <a href={waUrl} class="hover:text-pink transition-colors">+62 811-2233-445</a>
+          </li>
+          <li>
+            <span class="flex items-center gap-1.5 text-white/80 font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#9ca3af"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg>
+              Parkir
+            </span>
+            Gratis • 80 mobil + 100 motor
+          </li>
+        </ul>
+      </div>
+
+      <!-- Nav -->
+      <div>
+        <h3 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Navigasi</h3>
+        <ul class="flex flex-col gap-2.5">
+          {[['#rooms','Room Types'],['#harga','Harga'],['#promo','Promo & Paket'],['#katalog','Katalog Lagu'],['#gallery','Gallery'],['#faq','FAQ'],['#booking','Book Sekarang']].map(([href,label]) => (
+            <li>
+              <a href={href} class={`text-sm transition-colors ${label === 'Book Sekarang' ? 'text-pink font-semibold hover:text-pink-dark' : 'text-muted hover:text-white'}`}>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+      <p>© {new Date().getFullYear()} SoundBox Karaoke Jakarta. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <span>Tagline: <em class="text-white/60">Nyanyi Sepuasnya. Tanpa Malu-Malu.</em></span>
+      </div>
+    </div>
+  </div>
+</footer>

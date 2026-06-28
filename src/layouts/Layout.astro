@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'SoundBox Karaoke — Private Room Karaoke Premium Jakarta',
+  description = 'Karaoke private room dengan sound system JBL Pro, 50.000+ lagu, dan room dari 2 sampai 40 orang. Happy hour weekday, birthday package, corporate tersedia. Buka sampai 02.00.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="karaoke private room, tempat karaoke, karaoke jakarta, karaoke premium, karaoke birthday, karaoke corporate, happy hour karaoke, KTV" />
+
+    <!-- OG -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <!-- Schema: LocalBusiness + EntertainmentBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["EntertainmentBusiness", "LocalBusiness"],
+        "name": "SoundBox Karaoke",
+        "description": "Karaoke private room premium di Jakarta dengan sound system JBL Pro dan 50.000+ lagu",
+        "openingHours": "Mo-Su 12:00-02:00",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Jakarta",
+          "addressCountry": "ID"
+        },
+        "priceRange": "Rp 60.000 - Rp 500.000"
+      }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

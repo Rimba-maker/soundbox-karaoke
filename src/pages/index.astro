@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+import Pricing from '../components/sections/Pricing.astro';
+
+import Hero          from '../components/sections/Hero.tsx';
+import QuickBook     from '../components/sections/QuickBook.tsx';
+import RoomTypes     from '../components/sections/RoomTypes.tsx';
+import WhySoundBox   from '../components/sections/WhySoundBox.tsx';
+import Facilities    from '../components/sections/Facilities.tsx';
+import SongCatalog   from '../components/sections/SongCatalog.tsx';
+import PromoPackages from '../components/sections/PromoPackages.tsx';
+import Gallery       from '../components/sections/Gallery.tsx';
+import Testimonial   from '../components/sections/Testimonial.tsx';
+import FAQ           from '../components/sections/FAQ.tsx';
+import BookingCTA    from '../components/sections/BookingCTA.tsx';
+---
+
+<Layout>
+  <Navbar />
+
+  <main>
+    <Hero          client:load />
+    <QuickBook     client:visible />
+    <RoomTypes     client:visible />
+    <WhySoundBox   client:visible />
+    <Facilities    client:visible />
+    <SongCatalog   client:visible />
+    <Pricing />
+    <PromoPackages client:visible />
+    <Gallery       client:visible />
+    <Testimonial   client:visible />
+    <FAQ           client:visible />
+    <BookingCTA    client:idle />
+  </main>
+
+  <Footer />
+</Layout>
