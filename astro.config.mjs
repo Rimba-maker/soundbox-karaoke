@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://rimba-maker.github.io',
-  base: '/soundbox-karaoke',
+  base: process.env.GITHUB_ACTIONS ? '/soundbox-karaoke' : '/',
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
